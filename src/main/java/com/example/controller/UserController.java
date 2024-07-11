@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.dto.UserDto;
 import com.example.model.User;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,15 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteById(id);
+    }
+
+    @PostMapping("/register")
+    public String register(@RequestBody UserDto userDto) {
+        try {
+            userService.registerUser(userDto.getUsername(), userDto.getEmail(), userDto.getPassword());
+            return "User registered successfully";
+        } catch (RuntimeException e) {
+            return e.getMessage();
+        }
     }
 }
