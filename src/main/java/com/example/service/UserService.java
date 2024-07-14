@@ -33,7 +33,7 @@ public class UserService implements UserDetailsService {
     }
 
     public List<User> findAll() {
-        List<User> users = new ArrayList<User>();
+        List<User> users = new ArrayList<>();
         userRepository.findAll().forEach(users::add);
         return users;
     }
@@ -62,7 +62,6 @@ public class UserService implements UserDetailsService {
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getUsername())
                 .password(user.getPassword())
-                .roles("USER")
                 .build();
     }
 }

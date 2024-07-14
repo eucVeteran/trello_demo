@@ -23,6 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
     @Autowired
     private UserService userService;
 
@@ -59,7 +60,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(@RequestBody UserDto userDto) {
+    public String registerUser(@RequestBody UserDto userDto) {
         try {
             userService.registerUser(userDto.getUsername(), userDto.getEmail(), userDto.getPassword());
             return "User registered successfully";
