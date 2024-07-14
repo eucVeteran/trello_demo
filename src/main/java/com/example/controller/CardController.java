@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.model.Card;
 import com.example.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +24,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/cards")
 public class CardController {
-    @Autowired
-    private CardService cardService;
+    public CardController(CardService _cardService) {
+        cardService = _cardService;
+    }
+
+    private final CardService cardService;
 
     @PostMapping
     public Card createCard(@RequestBody Card card) {

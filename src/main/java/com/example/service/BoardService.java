@@ -4,6 +4,7 @@ import com.example.model.Board;
 import com.example.model.User;
 import com.example.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,8 +15,11 @@ import java.util.List;
  */
 @Service
 public class BoardService {
-    @Autowired
-    private BoardRepository boardRepository;
+    public BoardService(BoardRepository _boardRepository){
+        boardRepository = _boardRepository;
+    }
+
+    private final BoardRepository boardRepository;
 
     public Board save(Board board) {
         return boardRepository.save(board);
