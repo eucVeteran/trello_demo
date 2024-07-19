@@ -24,11 +24,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/cards")
 public class CardController {
+    private final CardService cardService;
+
     public CardController(CardService _cardService) {
         cardService = _cardService;
     }
 
-    private final CardService cardService;
+//    @Autowired
+//    private CardService cardService;
 
     @PostMapping
     public Card createCard(@RequestBody Card card) {

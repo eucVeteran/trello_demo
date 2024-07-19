@@ -17,7 +17,6 @@ import java.util.List;
  */
 @Service
 public class UserService implements UserDetailsService {
-
     @Autowired
     private UserRepository userRepository;
 
@@ -62,6 +61,7 @@ public class UserService implements UserDetailsService {
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getUsername())
                 .password(user.getPassword())
+                .authorities("ROLE_ADMIN")
                 .build();
     }
 }

@@ -4,7 +4,6 @@ package com.example.dto;
  * @author Azizbek Toshpulatov
  */
 public class UserDto {
-
     private String username;
     private String email;
     private String password;
