@@ -9,6 +9,7 @@ import com.example.service.CardService;
 import com.example.service.ColumnService;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -37,8 +38,12 @@ public class ScheduledTasks {
     private long passwordInt = 0;
 
 
-    @Scheduled(fixedRate = 5000)
+    @Value("${schedule.delay}")
+    private long scheduleDelay;
+
+    @Scheduled(fixedRateString = "${schedule.delay}")
     public void insertRandomEntity() {
+        System.out.println("Default value is: " + scheduleDelay);
         double probability = random.nextDouble();
 
         if (probability < 0.8) {
